@@ -9,7 +9,15 @@ Taken from this exact [commit](https://github.com/python/cpython/blob/562c13f573
 ```shell
 $python timeit.py -n 5 -r 5 -s "import asyncio" 'await asyncio.sleep(2)'
 5 loops, best of 5: 2 sec per loop
+
+$python timeit.py -n 5 -r 5 -s "import asyncio" 'await asyncio.sleep(2)
+await asyncio.sleep(2)'
+5 loops, best of 5: 4 sec per loop
+
+$python timeit.py -n 5 -r 5 -s "import asyncio" 'await asyncio.gather(asyncio.sleep(2),asyncio.sleep(2))'
+5 loops, best of 5: 2 sec per loop
 ```
+
 ## Warning
 This is not extensively tested. Also unsure if timeit can be reliably used for async code. 
 
